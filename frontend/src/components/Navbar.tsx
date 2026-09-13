@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { CakeSlice, Menu, X, LogOut, User, ShoppingBag } from 'lucide-react';
+import { Menu, X, LogOut, User, ShoppingBag } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useAuth } from '../hooks/useAuth';
 import { useCart } from '../hooks/useCart';
+import ZoqelleLogo from '../assets/ZoqelleLogo.png'
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   `relative px-1 py-2 text-[13px] font-medium uppercase tracking-[0.12em] transition-colors focus-ring ${
@@ -34,10 +35,15 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3.5 md:px-6">
         <Link
           to="/"
-          className="flex items-center gap-2 shrink-0 focus-ring"
+          className="flex items-center justify-center gap-2 shrink-0 focus-ring"
           style={{ fontFamily: 'var(--font-family-display)' }}
         >
-          <CakeSlice className="h-5 w-5 text-accent-gold" strokeWidth={1.75} />
+          {/* <CakeSlice className="h-5 w-5 text-accent-gold" strokeWidth={1.75} /> */}
+          <img
+          src={ZoqelleLogo}
+          alt="Zoqelle Logo"
+          className="h-auto w-8 sm:w-9 md:w-10 object-contain md:pb-3 pb-1"
+  />
           <span className="text-[22px] font-semibold tracking-tight text-primary">Zoqelle</span>
         </Link>
 
