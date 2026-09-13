@@ -2,8 +2,8 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { Cake, Loader2, Lock, Mail, User } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
+import { CakeSlice, Loader2, Lock, Mail, User, Eye, EyeOff } from 'lucide-react';
+import { useAuth } from '../hooks/useAuth';
 
 export default function Register() {
   const { user, loading, signUp, signInWithGoogle } = useAuth();
@@ -13,12 +13,14 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-rose-50">
-        <Loader2 className="w-8 h-8 animate-spin text-rose-500" />
+      <div className="min-h-screen flex items-center justify-center bg-surface">
+        <Loader2 className="w-8 h-8 animate-spin text-accent-gold" />
       </div>
     );
   }
@@ -43,7 +45,7 @@ export default function Register() {
     setSubmitting(true);
     try {
       await signUp(email, password, name);
-      toast.success('Account created! Welcome to Cremora!');
+      toast.success('Welcome to Zoqelle!');
       navigate('/');
     } catch (err) {
       toast.error(err instanceof Error ? err.message : 'Failed to sign up');
@@ -61,23 +63,27 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen bg-rose-50 flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-        <div className="flex flex-col items-center mb-6">
-          <div className="w-14 h-14 rounded-full bg-rose-100 flex items-center justify-center mb-3">
-            <Cake className="w-7 h-7 text-rose-500" />
+    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-surface" style={{ fontFamily: 'var(--font-family-body)' }}>
+      <div className="w-full max-w-md bg-surface-bright rounded-2xl border border-outline-variant/80 p-8 md:p-10 animate-slide-up shadow-sm">
+        <div className="flex flex-col items-center mb-8 text-center">
+          <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4 bg-primary text-on-primary">
+            <CakeSlice className="w-7 h-7 text-accent-gold" strokeWidth={1.5} />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">Create your account</h1>
-          <p className="text-sm text-gray-500 mt-1">Join Cremora today</p>
+          <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-secondary mb-1">
+            Join Our Bakery
+          </span>
+          <h1 className="text-2xl md:text-3xl text-on-surface" style={{ fontFamily: 'var(--font-family-display)', fontWeight: 600 }}>
+            Create Your Account
+          </h1>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-              Name
+            <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-wider text-on-surface-variant mb-1.5">
+              Full Name
             </label>
             <div className="relative">
-              <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-on-surface-variant/70" />
               <input
                 id="name"
                 type="text"
@@ -85,17 +91,18 @@ export default function Register() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Juan Dela Cruz"
-                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2.5 bg-surface border border-outline-variant text-on-surface placeholder-on-surface-variant/50 focus:outline-none focus:border-accent-gold transition-colors text-sm focus-ring"
+                style={{ borderRadius: 'var(--radius-md)' }}
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              Email
+            <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-on-surface-variant mb-1.5">
+              Email Address
             </label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-on-surface-variant/70" />
               <input
                 id="email"
                 type="email"
@@ -103,69 +110,95 @@ export default function Register() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2.5 bg-surface border border-outline-variant text-on-surface placeholder-on-surface-variant/50 focus:outline-none focus:border-accent-gold transition-colors text-sm focus-ring"
+                style={{ borderRadius: 'var(--radius-md)' }}
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="password" className="block text-xs font-semibold uppercase tracking-wider text-on-surface-variant mb-1.5">
               Password
             </label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-on-surface-variant/70" />
               <input
                 id="password"
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400 focus:border-transparent"
+                className="w-full pl-10 pr-10 py-2.5 bg-surface border border-outline-variant text-on-surface placeholder-on-surface-variant/50 focus:outline-none focus:border-accent-gold transition-colors text-sm focus-ring"
+                style={{ borderRadius: 'var(--radius-md)' }}
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant/70 hover:text-on-surface transition-colors cursor-pointer"
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
             </div>
           </div>
 
           <div>
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="confirmPassword" className="block text-xs font-semibold uppercase tracking-wider text-on-surface-variant mb-1.5">
               Confirm Password
             </label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-on-surface-variant/70" />
               <input
                 id="confirmPassword"
-                type="password"
+                type={showConfirmPassword ? 'text' : 'password'}
                 required
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400 focus:border-transparent"
+                className="w-full pl-10 pr-10 py-2.5 bg-surface border border-outline-variant text-on-surface placeholder-on-surface-variant/50 focus:outline-none focus:border-accent-gold transition-colors text-sm focus-ring"
+                style={{ borderRadius: 'var(--radius-md)' }}
               />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant/70 hover:text-on-surface transition-colors cursor-pointer"
+                aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
+              >
+                {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
             </div>
           </div>
 
           <button
             type="submit"
             disabled={submitting}
-            className="w-full flex items-center justify-center gap-2 bg-rose-500 hover:bg-rose-600 disabled:opacity-60 text-white font-semibold py-2.5 rounded-lg transition-colors"
+            className="w-full flex items-center justify-center gap-2 mt-2 py-3 px-4 text-xs font-semibold uppercase tracking-wide text-on-primary transition-all disabled:opacity-60 focus-ring cursor-pointer"
+            style={{
+              backgroundColor: 'var(--color-primary-container)',
+              borderRadius: 'var(--radius-md)'
+            }}
           >
             {submitting && <Loader2 className="w-4 h-4 animate-spin" />}
-            {submitting ? 'Creating account...' : 'Sign Up'}
+            {submitting ? 'Creating account...' : 'Create Account'}
           </button>
         </form>
 
-        <div className="flex items-center my-5">
-          <div className="flex-1 h-px bg-gray-200" />
-          <span className="px-3 text-xs text-gray-400 uppercase">or</span>
-          <div className="flex-1 h-px bg-gray-200" />
+        <div className="flex items-center my-6">
+          <div className="flex-1 h-px bg-outline-variant/60" />
+          <span className="px-4 text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant">
+            or
+          </span>
+          <div className="flex-1 h-px bg-outline-variant/60" />
         </div>
 
         <button
           onClick={handleGoogle}
           disabled={submitting}
-          className="w-full flex items-center justify-center gap-3 border border-gray-300 hover:bg-gray-50 py-2.5 rounded-lg font-medium text-gray-700 transition-colors"
+          className="w-full flex items-center justify-center gap-3 border border-outline-variant hover:bg-surface-container py-2.5 px-4 text-xs font-semibold uppercase tracking-wider text-on-surface transition-all disabled:opacity-60 focus-ring cursor-pointer"
+          style={{ borderRadius: 'var(--radius-md)' }}
         >
-          <svg className="w-5 h-5" viewBox="0 0 24 24">
+          <svg className="w-4 h-4" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z" />
             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z" />
             <path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z" />
@@ -174,9 +207,9 @@ export default function Register() {
           Sign up with Google
         </button>
 
-        <p className="text-center text-sm text-gray-500 mt-6">
+        <p className="text-center text-xs text-on-surface-variant mt-6">
           Already have an account?{' '}
-          <Link to="/login" className="text-rose-500 font-semibold hover:text-rose-600">
+          <Link to="/login" className="font-semibold text-accent-gold hover:underline transition-colors focus-ring">
             Sign In
           </Link>
         </p>

@@ -1,16 +1,20 @@
 import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { CakeSlice, Menu, X, LogOut, User } from 'lucide-react';
+import { CakeSlice, Menu, X, LogOut, User, ShoppingBag } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../hooks/useAuth';
+import { useCart } from '../hooks/useCart';
 
-const linkClass = ({ isActive }: { isActive: boolean }) =>
-  `px-3 py-2 rounded-lg font-medium transition ${
-    isActive ? 'text-rose-600 bg-rose-100' : 'text-gray-700 hover:text-rose-600'
+const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+  `relative px-1 py-2 text-[13px] font-medium uppercase tracking-[0.12em] transition-colors focus-ring ${
+    isActive
+      ? 'text-primary after:absolute after:left-0 after:right-0 after:-bottom-[1px] after:h-[1.5px] after:bg-accent-gold'
+      : 'text-on-surface-variant hover:text-primary'
   }`;
 
 export default function Navbar() {
   const { user, signOut } = useAuth();
+  const { totalItems } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -26,84 +30,128 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-40 border-b border-rose-100 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link to="/" className="flex items-center gap-2 text-xl font-bold text-rose-600">
-          <CakeSlice className="h-6 w-6" />
-          Cremora
+    <nav className="sticky top-0 z-40 border-b border-outline-variant/70 bg-surface-bright/95 backdrop-blur-sm" style={{ fontFamily: 'var(--font-family-body)' }}>
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3.5 md:px-6">
+        <Link
+          to="/"
+          className="flex items-center gap-2 shrink-0 focus-ring"
+          style={{ fontFamily: 'var(--font-family-display)' }}
+        >
+          <CakeSlice className="h-5 w-5 text-accent-gold" strokeWidth={1.75} />
+          <span className="text-[22px] font-semibold tracking-tight text-primary">Zoqelle</span>
         </Link>
 
-        <div className="hidden items-center gap-1 md:flex">
-          <NavLink to="/" end className={linkClass}>Home</NavLink>
-          <NavLink to="/shop" className={linkClass}>Shop</NavLink>
-          <NavLink to="/cart" className={linkClass}>Cart</NavLink>
+        <div className="hidden items-center gap-8 md:flex">
+          <NavLink to="/" end className={navLinkClass}>Home</NavLink>
+          <NavLink to="/shop" className={navLinkClass}>Shop</NavLink>
         </div>
 
-        {user ? (
-          <div className="hidden items-center gap-2 md:flex">
-            <Link
-              to="/profile"
-              className="flex items-center gap-1 rounded-lg px-3 py-2 font-medium text-gray-700 hover:text-rose-600"
-            >
-              <User className="h-4 w-4" />
-              Profile
-            </Link>
-            <button
-              onClick={handleSignOut}
-              className="flex items-center gap-1 rounded-lg px-3 py-2 font-medium text-gray-700 hover:text-rose-600"
-            >
-              <LogOut className="h-4 w-4" />
-              Sign Out
-            </button>
-          </div>
-        ) : (
-          <div className="hidden items-center gap-2 md:flex">
-            <Link
-              to="/login"
-              className="rounded-lg px-4 py-2 font-medium text-rose-600 hover:bg-rose-50"
-            >
-              Login
-            </Link>
-            <Link
-              to="/register"
-              className="rounded-lg bg-rose-500 px-4 py-2 font-medium text-white shadow hover:bg-rose-600"
-            >
-              Register
-            </Link>
-          </div>
-        )}
-
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="rounded-lg p-2 text-gray-700 md:hidden"
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </div>
-
-      {menuOpen && (
-        <div className="flex flex-col gap-1 border-t border-rose-100 bg-white px-4 py-3 md:hidden">
-          <NavLink to="/" end className={linkClass} onClick={() => setMenuOpen(false)}>Home</NavLink>
-          <NavLink to="/shop" className={linkClass} onClick={() => setMenuOpen(false)}>Shop</NavLink>
-          <NavLink to="/cart" className={linkClass} onClick={() => setMenuOpen(false)}>Cart</NavLink>
-
+        <div className="hidden items-center gap-5 md:flex">
           {user ? (
             <>
-              <NavLink to="/profile" className={linkClass} onClick={() => setMenuOpen(false)}>
+              <Link
+                to="/profile"
+                className="flex items-center gap-1.5 text-[13px] font-medium text-on-surface-variant hover:text-primary transition-colors focus-ring"
+              >
+                <User className="h-[15px] w-[15px]" strokeWidth={1.75} />
                 Profile
-              </NavLink>
+              </Link>
+              <Link
+                to="/orders"
+                className="text-[13px] font-medium text-on-surface-variant hover:text-primary transition-colors focus-ring"
+              >
+                Orders
+              </Link>
               <button
                 onClick={handleSignOut}
-                className="flex items-center gap-2 px-3 py-2 text-left font-medium text-gray-700"
+                className="flex items-center gap-1.5 text-[13px] font-medium text-on-surface-variant hover:text-primary transition-colors focus-ring"
               >
-                <LogOut className="h-4 w-4" /> Sign Out
+                <LogOut className="h-[15px] w-[15px]" strokeWidth={1.75} />
+                Sign Out
               </button>
             </>
           ) : (
             <>
-              <NavLink to="/login" className={linkClass} onClick={() => setMenuOpen(false)}>Login</NavLink>
-              <NavLink to="/register" className={linkClass} onClick={() => setMenuOpen(false)}>Register</NavLink>
+              <Link
+                to="/login"
+                className="text-[13px] font-medium text-on-surface-variant hover:text-primary transition-colors focus-ring"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="px-4 py-2 text-[13px] font-semibold uppercase tracking-wide text-on-primary transition-colors focus-ring"
+                style={{ backgroundColor: 'var(--color-primary)', borderRadius: 'var(--radius-md)' }}
+              >
+                Register
+              </Link>
+            </>
+          )}
+
+          <NavLink
+            to="/cart"
+            className={({ isActive }) => `relative flex items-center focus-ring ${isActive ? 'text-primary' : 'text-on-surface-variant hover:text-primary'} transition-colors`}
+            aria-label="Cart"
+          >
+            <ShoppingBag className="h-[19px] w-[19px]" strokeWidth={1.75} />
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center text-[10px] font-bold text-on-primary rounded-full"
+                style={{ backgroundColor: 'var(--color-accent-gold)' }}
+              >
+                {totalItems > 9 ? '9+' : totalItems}
+              </span>
+            )}
+          </NavLink>
+        </div>
+
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="rounded-md p-2 text-on-surface-variant md:hidden hover:bg-surface-container transition-colors focus-ring"
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X className="h-5 w-5" strokeWidth={1.75} /> : <Menu className="h-5 w-5" strokeWidth={1.75} />}
+        </button>
+      </div>
+
+      {menuOpen && (
+        <div className="flex flex-col gap-1 border-t border-outline-variant/70 bg-surface-bright px-4 py-4 md:hidden animate-slide-down">
+          <NavLink to="/" end className="px-2 py-2.5 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors focus-ring" onClick={() => setMenuOpen(false)}>Home</NavLink>
+          <NavLink to="/shop" className="px-2 py-2.5 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors focus-ring" onClick={() => setMenuOpen(false)}>Shop</NavLink>
+          <NavLink
+            to="/cart"
+            className="flex items-center gap-2 px-2 py-2.5 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors focus-ring"
+            onClick={() => setMenuOpen(false)}
+          >
+            <ShoppingBag className="h-[17px] w-[17px]" strokeWidth={1.75} />
+            Cart
+            {totalItems > 0 && (
+              <span className="ml-auto flex h-5 w-5 items-center justify-center text-xs font-bold text-on-primary rounded-full"
+                style={{ backgroundColor: 'var(--color-accent-gold)' }}
+              >
+                {totalItems > 99 ? '99+' : totalItems}
+              </span>
+            )}
+          </NavLink>
+
+          {user ? (
+            <>
+              <NavLink to="/profile" className="px-2 py-2.5 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors focus-ring" onClick={() => setMenuOpen(false)}>
+                Profile
+              </NavLink>
+              <NavLink to="/orders" className="px-2 py-2.5 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors focus-ring" onClick={() => setMenuOpen(false)}>
+                My Orders
+              </NavLink>
+              <button
+                onClick={handleSignOut}
+                className="flex items-center gap-2 px-2 py-2.5 text-left text-sm font-medium text-on-surface-variant hover:text-primary focus-ring"
+              >
+                <LogOut className="h-4 w-4" strokeWidth={1.75} /> Sign Out
+              </button>
+            </>
+          ) : (
+            <>
+              <NavLink to="/login" className="px-2 py-2.5 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors focus-ring" onClick={() => setMenuOpen(false)}>Login</NavLink>
+              <NavLink to="/register" className="px-2 py-2.5 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors focus-ring" onClick={() => setMenuOpen(false)}>Register</NavLink>
             </>
           )}
         </div>

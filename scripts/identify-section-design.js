@@ -40,7 +40,7 @@ const SECTION_DESIGNS = {
   hero: {
     name: 'Hero Section',
     sectionKey: 'hero',
-    description: 'Primary landing section introducing Cremora luxury patisserie',
+    description: 'Primary landing section introducing Zoqelle luxury patisserie',
     colors: {
       headline: '#30061A (Nightshade)',
       subheadline: '#514347 (Muted Taupe)',
@@ -134,7 +134,7 @@ function main() {
   const target = args[0] ? args[0].toLowerCase() : '--list';
 
   if (target === '--list' || target === '-l') {
-    console.log('\n🎨 Cremora Patisserie - Available Sections:');
+    console.log('\n🎨 Zoqelle Patisserie - Available Sections:');
     console.log('------------------------------------------------');
     Object.keys(SECTION_DESIGNS).forEach((key) => {
       console.log(` • ${key.padEnd(15)} : ${SECTION_DESIGNS[key].name}`);

@@ -27,11 +27,11 @@ export default function AuthCallback(){
 
 
 
-    return(
-        <div className="flex min-h-screen items-center justify-center bg-amber-50">
-            <p className="text-black">Singning you in ...</p>
+    return (
+        <div className="flex min-h-screen items-center justify-center bg-surface" style={{ fontFamily: 'var(--font-family-body)' }}>
+            <p className="text-on-surface font-medium">Signing you in...</p>
         </div>
-    )
+    );
 
 
 }

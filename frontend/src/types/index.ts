@@ -46,6 +46,10 @@ export type OrderItem = {
   product_price: number;
   quantity: number;
   subtotal: number;
+  image_url?: string | null;
+  products?: {
+    image_url: string | null;
+  } | null;
 };
 
 export type CartItem = {

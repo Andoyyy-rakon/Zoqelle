@@ -1,5 +1,5 @@
 /**
- * Cremora Premium Patisserie - Design System Tokens & Section Mappings
+ * Zoqelle Premium Patisserie - Design System Tokens & Section Mappings
  * Project ID: 15201429199903468545
  */
 
