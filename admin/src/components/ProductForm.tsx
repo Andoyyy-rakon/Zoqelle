@@ -156,7 +156,7 @@ export default function ProductForm({ product, onSuccess, onCancel }: ProductFor
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs" role="dialog" aria-modal="true" aria-labelledby="form-title">
       <div className="w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-surface-bright rounded-2xl border border-outline-variant shadow-2xl animate-fade-in" style={{ fontFamily: 'var(--font-family-body)' }}>
-        {/* Header */}
+        
         <div className="sticky top-0 z-10 flex items-center justify-between p-5 border-b border-outline-variant/60 bg-surface-bright/95 backdrop-blur-sm rounded-t-2xl">
           <h2 id="form-title" className="text-xl font-bold text-on-surface" style={{ fontFamily: 'var(--font-family-display)' }}>
             {isEditing ? 'Edit Bakery Product' : 'Add New Cake / Product'}
@@ -166,9 +166,8 @@ export default function ProductForm({ product, onSuccess, onCancel }: ProductFor
           </button>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="p-6 space-y-5">
-          {/* Image Upload */}
+          
           <div>
             <label className="block mb-2 text-xs font-semibold uppercase tracking-wider text-secondary">
               Product Image
@@ -204,7 +203,6 @@ export default function ProductForm({ product, onSuccess, onCancel }: ProductFor
             </div>
           </div>
 
-          {/* Name */}
           <div>
             <label htmlFor="name" className="block mb-2 text-xs font-semibold uppercase tracking-wider text-secondary">
               Product Name <span className="text-red-700">*</span>
@@ -223,7 +221,6 @@ export default function ProductForm({ product, onSuccess, onCancel }: ProductFor
             {errors.name && <p className="mt-1.5 text-xs text-red-600 font-medium">{errors.name}</p>}
           </div>
 
-          {/* Description */}
           <div>
             <label htmlFor="description" className="block mb-2 text-xs font-semibold uppercase tracking-wider text-secondary">
               Description / Notes
@@ -240,7 +237,6 @@ export default function ProductForm({ product, onSuccess, onCancel }: ProductFor
             />
           </div>
 
-          {/* Price & Category */}
           <div className="grid md:grid-cols-2 gap-5">
             <div>
               <label htmlFor="price" className="block mb-2 text-xs font-semibold uppercase tracking-wider text-secondary">
@@ -283,7 +279,6 @@ export default function ProductForm({ product, onSuccess, onCancel }: ProductFor
             </div>
           </div>
 
-          {/* Stock */}
           <div>
             <label htmlFor="stock" className="block mb-2 text-xs font-semibold uppercase tracking-wider text-secondary">
               Stock Quantity <span className="text-red-700">*</span>
@@ -303,7 +298,6 @@ export default function ProductForm({ product, onSuccess, onCancel }: ProductFor
             {errors.stock && <p className="mt-1.5 text-xs text-red-600 font-medium">{errors.stock}</p>}
           </div>
 
-          {/* Toggles */}
           <div className="grid sm:grid-cols-2 gap-4">
             <label className="flex items-center gap-3 p-4 bg-surface border border-outline-variant/80 rounded-xl cursor-pointer hover:border-accent-gold transition-colors">
               <input
@@ -340,7 +334,6 @@ export default function ProductForm({ product, onSuccess, onCancel }: ProductFor
             </label>
           </div>
 
-          {/* Actions */}
           <div className="flex gap-3 pt-4 border-t border-outline-variant/60">
             <button
               type="button"

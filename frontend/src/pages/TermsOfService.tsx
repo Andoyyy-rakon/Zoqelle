@@ -3,7 +3,7 @@ import { FileText } from 'lucide-react';
 export default function TermsOfService() {
   return (
     <div className="min-h-screen bg-surface" style={{ fontFamily: 'var(--font-family-body)' }}>
-      {/* Header */}
+      
       <section className="relative bg-primary text-on-primary py-14 md:py-18 px-4 md:px-6 text-center">
         <div className="mx-auto max-w-3xl animate-fade-in">
           <span className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent-gold">
@@ -22,7 +22,6 @@ export default function TermsOfService() {
         </div>
       </section>
 
-      {/* Terms Content */}
       <section className="py-14 md:py-20 px-4 md:px-6">
         <div className="mx-auto max-w-3xl bg-surface-bright border border-outline-variant/80 p-6 md:p-10 rounded-xl space-y-8 text-on-surface-variant text-sm md:text-base leading-relaxed">
           <div>

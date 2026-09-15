@@ -8,7 +8,7 @@ export default function NotFound() {
       style={{ fontFamily: 'var(--font-family-body)' }}
     >
       <div className="mx-auto max-w-2xl text-center animate-fade-in">
-        {/* Decorative Pastry Badge */}
+        
         <div className="mb-6 inline-flex items-center justify-center gap-2 rounded-full border border-accent-gold/40 bg-surface-bright px-4 py-1.5 shadow-sm">
           <CakeSlice className="h-4 w-4 text-accent-gold" strokeWidth={1.75} />
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
@@ -16,7 +16,6 @@ export default function NotFound() {
           </span>
         </div>
 
-        {/* Large Prominent 404 Display */}
         <div className="relative my-2 select-none">
           <h1
             className="text-8xl md:text-[11rem] font-bold tracking-tighter text-primary/10 leading-none"
@@ -34,7 +33,6 @@ export default function NotFound() {
           </div>
         </div>
 
-        {/* Title & Description */}
         <div className="mt-4 space-y-3">
           <h2
             className="text-3xl md:text-4xl text-on-surface"
@@ -47,7 +45,6 @@ export default function NotFound() {
           </p>
         </div>
 
-        {/* Action Buttons */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             to="/"

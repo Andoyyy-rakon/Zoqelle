@@ -88,7 +88,6 @@ export default function Profile() {
             </h1>
           </div>
 
-          {/* Profile Card Header */}
           <div className="bg-surface-bright rounded-2xl border border-outline-variant/80 p-6 md:p-8 mb-8 animate-slide-up">
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
               <div className="relative w-20 h-20 flex-shrink-0">
@@ -120,7 +119,6 @@ export default function Profile() {
             </div>
           </div>
 
-          {/* Profile Form */}
           <div className="bg-surface-bright rounded-2xl border border-outline-variant/80 p-6 md:p-8 animate-slide-up">
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-outline-variant/60">
               <h2 className="text-lg font-semibold text-on-surface"

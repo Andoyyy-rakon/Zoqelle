@@ -29,7 +29,7 @@ export default function AdminLayout() {
 
   return (
     <div className="min-h-screen bg-surface" style={{ fontFamily: 'var(--font-family-body)' }}>
-      {/* Mobile sidebar overlay */}
+      
       {sidebarOpen && (
         <div
           className="fixed inset-0 z-40 bg-black/50 lg:hidden"
@@ -38,7 +38,6 @@ export default function AdminLayout() {
         />
       )}
 
-      {/* Sidebar */}
       <aside
         className={`fixed inset-y-0 left-0 z-50 w-64 bg-surface-bright border-r border-outline-variant/80 transform transition-transform duration-200 lg:translate-x-0 ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
@@ -46,7 +45,7 @@ export default function AdminLayout() {
         aria-label="Sidebar"
       >
         <div className="flex h-full flex-col">
-          {/* Sidebar Header */}
+          
           <div className="flex h-16 items-center justify-between px-6 border-b border-outline-variant/60">
             <Link to="/" className="flex items-center gap-2">
               <span className="text-xl font-bold text-on-surface tracking-tight" style={{ fontFamily: 'var(--font-family-display)' }}>
@@ -65,7 +64,6 @@ export default function AdminLayout() {
             </button>
           </div>
 
-          {/* Navigation */}
           <nav className="flex-1 p-4 space-y-1.5 overflow-y-auto" aria-label="Main navigation">
             {navigation.map((item) => {
               const active = isActive(item.href);
@@ -87,7 +85,6 @@ export default function AdminLayout() {
             })}
           </nav>
 
-          {/* Sidebar Footer */}
           <div className="p-4 border-t border-outline-variant/60 bg-surface-container/30">
             <div className="flex items-center gap-2 text-xs text-on-surface-variant">
               <Sparkles className="h-3.5 w-3.5 text-accent-gold" />
@@ -97,9 +94,8 @@ export default function AdminLayout() {
         </div>
       </aside>
 
-      {/* Main content */}
       <div className="lg:pl-64">
-        {/* Top Header */}
+        
         <header className="sticky top-0 z-30 flex h-16 items-center justify-between px-4 lg:px-8 bg-surface-bright/95 backdrop-blur border-b border-outline-variant/60">
           <div className="flex items-center gap-4">
             <button
@@ -163,7 +159,6 @@ export default function AdminLayout() {
           </div>
         </header>
 
-        {/* Page Content */}
         <main className="p-4 lg:p-8">
           <Outlet />
         </main>

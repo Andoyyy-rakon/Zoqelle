@@ -1,7 +1,3 @@
-/**
- * Zoqelle Premium Patisserie - Design System Tokens & Section Mappings
- * Project ID: 15201429199903468545
- */
 
 export const colors = {
   primary: '#30061a',

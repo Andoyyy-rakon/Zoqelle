@@ -59,7 +59,7 @@ const OrderCard = ({
 
   return (
     <article className="bg-surface-bright rounded-2xl border border-outline-variant/80 overflow-hidden lg:hidden animate-fade-in mb-4">
-      {/* Card Header */}
+      
       <button
         onClick={onToggle}
         className="w-full p-4 flex flex-col gap-3 text-left hover:bg-surface-container/40 transition-colors focus-ring cursor-pointer"
@@ -93,10 +93,9 @@ const OrderCard = ({
         </div>
       </button>
 
-      {/* Expanded Content */}
       {isExpanded && (
         <div className="bg-surface p-4 border-t border-outline-variant/60 space-y-4">
-          {/* Order Items */}
+          
           {order.order_items && order.order_items.length > 0 && (
             <div>
               <h4 className="mb-3 text-sm font-semibold text-on-surface uppercase tracking-wider" style={{ fontFamily: 'var(--font-family-display)' }}>
@@ -135,7 +134,6 @@ const OrderCard = ({
             </div>
           )}
 
-          {/* Customer & Shipping Info */}
           <div className="grid gap-3">
             <div className="bg-surface-bright rounded-xl border border-outline-variant/60 p-4 space-y-2 text-xs">
               <h4 className="text-sm font-semibold text-on-surface" style={{ fontFamily: 'var(--font-family-display)' }}>
@@ -165,7 +163,6 @@ const OrderCard = ({
             </div>
           </div>
 
-          {/* Status Update */}
           <div className="bg-surface-bright rounded-xl border border-outline-variant/60 p-4">
             <div className="flex items-center justify-between mb-3">
               <h4 className="text-xs font-semibold uppercase tracking-wider text-secondary">
@@ -202,7 +199,6 @@ const OrderCard = ({
             </div>
           </div>
 
-          {/* Delete Order */}
           <div className="pt-2">
             <button
               onClick={() => onDelete(order.id)}
@@ -273,7 +269,7 @@ const OrderTableRow = ({
         <tr>
           <td colSpan={3} className="p-0 border-b border-outline-variant/60">
             <div className="bg-surface p-6 space-y-6 animate-fade-in">
-              {/* Order Items */}
+              
               {order.order_items && order.order_items.length > 0 && (
                 <div>
                   <h4 className="mb-3 text-sm font-semibold text-on-surface uppercase tracking-wider" style={{ fontFamily: 'var(--font-family-display)' }}>
@@ -312,7 +308,6 @@ const OrderTableRow = ({
                 </div>
               )}
 
-              {/* Customer & Shipping Info */}
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-surface-bright rounded-xl border border-outline-variant/60 p-4 text-xs space-y-2">
                   <h4 className="text-sm font-semibold text-on-surface mb-2" style={{ fontFamily: 'var(--font-family-display)' }}>
@@ -342,7 +337,6 @@ const OrderTableRow = ({
                 </div>
               </div>
 
-              {/* Status Update */}
               <div className="bg-surface-bright rounded-xl border border-outline-variant/60 p-4">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="text-xs font-semibold uppercase tracking-wider text-secondary">
@@ -382,7 +376,6 @@ const OrderTableRow = ({
                 </div>
               </div>
 
-              {/* Delete Order */}
               <div className="flex justify-end pt-2">
                 <button
                   onClick={() => onDelete(order.id)}
@@ -406,7 +399,6 @@ export default function Orders() {
   const [search, setSearch] = useState('');
   const [expandedOrderId, setExpandedOrderId] = useState<string | null>(null);
 
-  // Modal State for Order Deletion
   const [deleteModalOrderId, setDeleteModalOrderId] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -459,7 +451,6 @@ export default function Orders() {
 
         if (ordersError) throw ordersError;
 
-        // Fetch missing images
         const allProductIds = [...new Set(
           (ordersData || []).flatMap(o => o.order_items || [])
             .filter(i => i.product_id && !i.products?.image_url)
@@ -565,7 +556,7 @@ export default function Orders() {
 
   return (
     <div className="space-y-6 animate-fade-in" style={{ fontFamily: 'var(--font-family-body)' }}>
-      {/* Header */}
+      
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-outline-variant/60 pb-4">
         <div>
           <h1 className="text-2xl font-bold text-on-surface" style={{ fontFamily: 'var(--font-family-display)' }}>
@@ -577,7 +568,6 @@ export default function Orders() {
         </div>
       </div>
 
-      {/* Filters */}
       <div className="bg-surface-bright rounded-2xl border border-outline-variant/80 p-4">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="relative flex-1">
@@ -605,7 +595,6 @@ export default function Orders() {
         </div>
       </div>
 
-      {/* Orders List */}
       <div className="bg-surface-bright rounded-2xl border border-outline-variant/80 overflow-hidden" style={{ boxShadow: 'var(--shadow-card)' }}>
         {filteredOrders.length === 0 ? (
           <div className="text-center py-16">
@@ -619,7 +608,7 @@ export default function Orders() {
           </div>
         ) : (
           <>
-            {/* Mobile View */}
+            
             <div className="lg:hidden p-4">
               {filteredOrders.map((order) => (
                 <OrderCard
@@ -633,7 +622,6 @@ export default function Orders() {
               ))}
             </div>
 
-            {/* Desktop View */}
             <div className="hidden lg:block">
               <table className="w-full text-left" role="table">
                 <tbody>
@@ -654,7 +642,6 @@ export default function Orders() {
         )}
       </div>
 
-      {/* Delete Confirmation Modal */}
       {deleteModalOrderId && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in">
           <div className="bg-surface-bright border border-outline-variant/80 rounded-2xl p-6 md:p-8 max-w-md w-full shadow-2xl animate-scale-in space-y-5">

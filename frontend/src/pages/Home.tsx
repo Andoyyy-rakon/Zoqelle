@@ -59,7 +59,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-surface" style={{ fontFamily: 'var(--font-family-body)' }}>
-      {/* Hero Section */}
+      
       <section className="relative overflow-hidden border-b border-outline-variant/60">
         <div className="mx-auto max-w-6xl px-4 md:px-6 py-14 md:py-20">
           <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
@@ -130,7 +130,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Categories Section */}
       <section className={sectionClassName}>
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14 animate-fade-in">
@@ -183,7 +182,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Products Section */}
       <section className={`${sectionClassName} bg-surface-bright border-y border-outline-variant/60`}>
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col items-center text-center mb-12 md:mb-16 animate-fade-in">
@@ -264,7 +262,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
       <section className={sectionClassName}>
         <div className="mx-auto max-w-6xl">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-outline-variant animate-slide-up">
@@ -286,7 +283,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="relative overflow-hidden" style={{ backgroundColor: 'var(--color-primary)' }}>
         <p
           aria-hidden="true"

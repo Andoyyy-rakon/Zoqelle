@@ -42,7 +42,6 @@ export default function Orders() {
 
         if (error) throw error;
 
-        // Fetch missing product images if products join is empty
         const allProductIds = [...new Set(
           (data || []).flatMap(o => o.order_items || [])
             .filter(i => i.product_id && !i.products?.image_url)
@@ -174,7 +173,7 @@ export default function Orders() {
                     className="bg-surface-bright rounded-xl border border-outline-variant/80 overflow-hidden transition-all duration-200 hover:border-outline"
                     role="listitem"
                   >
-                    {/* Header Button */}
+                    
                     <button
                       onClick={() => toggleOrder(order.id)}
                       className="w-full p-5 md:p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-left focus-ring cursor-pointer"
@@ -214,7 +213,6 @@ export default function Orders() {
                       </div>
                     </button>
 
-                    {/* Expanded Order Items */}
                     {expandedOrderId === order.id && order.order_items && order.order_items.length > 0 && (
                       <div className="border-t border-outline-variant/60 bg-surface/60 p-5 md:p-6 space-y-4 animate-in slide-in-from-top-2">
                         <h3 className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">

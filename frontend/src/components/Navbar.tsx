@@ -38,7 +38,7 @@ export default function Navbar() {
           className="flex items-center justify-center gap-2 shrink-0 focus-ring"
           style={{ fontFamily: 'var(--font-family-display)' }}
         >
-          {/* <CakeSlice className="h-5 w-5 text-accent-gold" strokeWidth={1.75} /> */}
+          
           <img
           src={ZoqelleLogo}
           alt="Zoqelle Logo"

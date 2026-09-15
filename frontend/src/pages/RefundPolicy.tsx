@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function RefundPolicy() {
   return (
     <div className="min-h-screen bg-surface" style={{ fontFamily: 'var(--font-family-body)' }}>
-      {/* Header */}
+      
       <section className="relative bg-primary text-on-primary py-14 md:py-18 px-4 md:px-6 text-center">
         <div className="mx-auto max-w-3xl animate-fade-in">
           <span className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent-gold">
@@ -23,10 +23,9 @@ export default function RefundPolicy() {
         </div>
       </section>
 
-      {/* Policy Content */}
       <section className="py-14 md:py-20 px-4 md:px-6">
         <div className="mx-auto max-w-3xl space-y-8 text-on-surface-variant text-sm md:text-base leading-relaxed">
-          {/* Order Cancellation Windows */}
+          
           <div className="bg-surface-bright border border-outline-variant/80 p-6 md:p-8 rounded-xl space-y-4">
             <h2 className="text-xl text-on-surface font-semibold flex items-center gap-2" style={{ fontFamily: 'var(--font-family-display)' }}>
               <CheckCircle2 className="h-5 w-5 text-accent-gold" />
@@ -45,7 +44,6 @@ export default function RefundPolicy() {
             </ul>
           </div>
 
-          {/* Damaged or Incorrect Items */}
           <div className="bg-surface-bright border border-outline-variant/80 p-6 md:p-8 rounded-xl space-y-4">
             <h2 className="text-xl text-on-surface font-semibold flex items-center gap-2" style={{ fontFamily: 'var(--font-family-display)' }}>
               <AlertTriangle className="h-5 w-5 text-accent-gold" />
@@ -61,7 +59,6 @@ export default function RefundPolicy() {
             </ol>
           </div>
 
-          {/* Refund Processing Timeline */}
           <div className="bg-surface-bright border border-outline-variant/80 p-6 md:p-8 rounded-xl space-y-3">
             <h2 className="text-xl text-on-surface font-semibold" style={{ fontFamily: 'var(--font-family-display)' }}>
               Refund Processing Timeline

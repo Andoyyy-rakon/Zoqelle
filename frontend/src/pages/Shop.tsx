@@ -32,7 +32,6 @@ export default function Shop() {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('newest');
 
-  // Sync selectedCategory when URL query parameter changes
   useEffect(() => {
     if (categoryParam) {
       setSelectedCategory(categoryParam);

@@ -53,14 +53,14 @@ export default function Cart() {
 
   const renderCartContent = () => (
     <div className="grid lg:grid-cols-12 gap-8 md:gap-12 items-start">
-      {/* Items List */}
+      
       <div className="lg:col-span-8 space-y-4 animate-slide-up">
         {items.map((cartItem) => (
           <article
             key={cartItem.product.id}
             className="flex flex-col sm:flex-row gap-5 p-4 bg-surface-bright rounded-xl border border-outline-variant/70 transition-all duration-200 hover:border-outline focus-ring"
           >
-            {/* Product Image */}
+            
             <div className="relative w-full sm:w-36 flex-shrink-0 aspect-[4/3] sm:aspect-square overflow-hidden rounded-lg bg-surface-container">
               <img
                 src={getImageUrl(cartItem.product)}
@@ -69,7 +69,6 @@ export default function Cart() {
               />
             </div>
 
-            {/* Product Info */}
             <div className="flex flex-1 flex-col justify-between">
               <div>
                 <div className="flex items-start justify-between gap-4">
@@ -96,7 +95,6 @@ export default function Cart() {
                   </button>
                 </div>
 
-                {/* Quantity Selector + Subtotal */}
                 <div className="mt-4 flex items-center justify-between gap-4 pt-4 border-t border-outline-variant/60">
                   <div className="flex items-center gap-3">
                     <span className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">Qty</span>
@@ -136,7 +134,6 @@ export default function Cart() {
         ))}
       </div>
 
-      {/* Order Summary */}
       <aside className="lg:col-span-4">
         <div className="sticky top-24 bg-surface-bright rounded-xl border border-outline-variant/80 p-6 animate-slide-up">
           <h2 className="mb-6 text-xl font-semibold text-on-surface"
@@ -201,7 +198,7 @@ export default function Cart() {
     <div className="min-h-screen bg-surface" style={{ fontFamily: 'var(--font-family-body)' }}>
       <section className="py-10 md:py-16 px-4 md:px-6">
         <div className="mx-auto max-w-6xl">
-          {/* Header */}
+          
           <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-secondary block mb-1">
@@ -228,7 +225,6 @@ export default function Cart() {
         </div>
       </section>
 
-      {/* Remove Confirmation Modal */}
       {itemToRemove && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 animate-fade-in" role="dialog" aria-modal="true" aria-labelledby="remove-modal-title">
           <div className="w-full max-w-md bg-surface-bright rounded-xl p-6 border border-outline-variant shadow-xl animate-scale-in">

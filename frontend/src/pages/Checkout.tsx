@@ -20,7 +20,6 @@ export default function Checkout() {
   });
   const hasPrefilledRef = useRef(false);
 
-  // Pre-fill form from profile
   useEffect(() => {
     if (profile && !hasPrefilledRef.current) {
       hasPrefilledRef.current = true;
@@ -33,7 +32,6 @@ export default function Checkout() {
     }
   }, [profile]);
 
-  // Redirect if not authenticated or cart empty
   useEffect(() => {
     if (!authLoading && !user) {
       navigate('/login', { replace: true });
@@ -62,7 +60,7 @@ export default function Checkout() {
     setIsSubmitting(true);
 
     try {
-      // Create order
+      
       const { data: order, error: orderError } = await supabase
         .from('orders')
         .insert({
@@ -79,7 +77,6 @@ export default function Checkout() {
 
       if (orderError) throw orderError;
 
-      // Create order items
       const orderItems = items.map((item) => ({
         order_id: order.id,
         product_id: item.product.id,
@@ -92,7 +89,6 @@ export default function Checkout() {
       const { error: itemsError } = await supabase.from('order_items').insert(orderItems);
       if (itemsError) throw itemsError;
 
-      // Decrease product stock
       for (const item of items) {
         await supabase
           .from('products')
@@ -100,7 +96,6 @@ export default function Checkout() {
           .eq('id', item.product.id);
       }
 
-      // Clear cart & update status
       clearCart();
       setOrderSuccess(true);
       toast.success('Order placed successfully!');
@@ -154,7 +149,7 @@ export default function Checkout() {
     <div className="min-h-screen bg-surface" style={{ fontFamily: 'var(--font-family-body)' }}>
       <section className="py-10 md:py-16 px-4 md:px-6">
         <div className="mx-auto max-w-6xl">
-          {/* Header */}
+          
           <div className="mb-10">
             <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-secondary block mb-1">
               Finalize Order
@@ -167,7 +162,7 @@ export default function Checkout() {
           </div>
 
           <div className="grid lg:grid-cols-12 gap-8 md:gap-12 items-start">
-            {/* Shipping Form */}
+            
             <div className="lg:col-span-7 space-y-6">
               <div className="bg-surface-bright rounded-xl border border-outline-variant/80 p-6 md:p-8 animate-slide-up">
                 <h2 className="mb-6 text-xl font-semibold text-on-surface" style={{ fontFamily: 'var(--font-family-display)' }}>
@@ -261,7 +256,6 @@ export default function Checkout() {
                 </form>
               </div>
 
-              {/* Trust Badges */}
               <div className="grid grid-cols-3 gap-4 text-xs text-on-surface-variant pt-2">
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="h-4 w-4 text-accent-gold flex-shrink-0" strokeWidth={1.75} />
@@ -278,14 +272,12 @@ export default function Checkout() {
               </div>
             </div>
 
-            {/* Order Summary */}
             <aside className="lg:col-span-5">
               <div className="sticky top-24 bg-surface-bright rounded-xl border border-outline-variant/80 p-6 animate-slide-up">
                 <h2 className="mb-6 text-xl font-semibold text-on-surface" style={{ fontFamily: 'var(--font-family-display)' }}>
                   Order Summary
                 </h2>
 
-                {/* Items */}
                 <div className="space-y-4 mb-6 max-h-72 overflow-y-auto pr-1">
                   {items.map((cartItem) => (
                     <div key={cartItem.product.id} className="flex gap-3 items-center">
@@ -313,7 +305,6 @@ export default function Checkout() {
                   ))}
                 </div>
 
-                {/* Totals */}
                 <dl className="space-y-3 border-t border-outline-variant/60 pt-4 text-sm">
                   <div className="flex justify-between text-on-surface-variant">
                     <dt>Subtotal ({totalItems} items)</dt>

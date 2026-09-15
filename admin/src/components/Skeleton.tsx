@@ -129,4 +129,3 @@ export function SkeletonList({ items = 5, className = "" }: { items?: number; cl
 }
 
 export default Skeleton;
-

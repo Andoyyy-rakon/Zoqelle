@@ -25,7 +25,7 @@ export default function DeliveryInfo() {
 
   return (
     <div className="min-h-screen bg-surface" style={{ fontFamily: 'var(--font-family-body)' }}>
-      {/* Header */}
+      
       <section className="relative bg-primary text-on-primary py-16 md:py-20 px-4 md:px-6 text-center">
         <div className="mx-auto max-w-3xl animate-fade-in">
           <span className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent-gold">
@@ -44,10 +44,9 @@ export default function DeliveryInfo() {
         </div>
       </section>
 
-      {/* Main Delivery Info */}
       <section className="py-14 md:py-20 px-4 md:px-6">
         <div className="mx-auto max-w-5xl space-y-12">
-          {/* Key Guarantee Cards */}
+          
           <div className="grid md:grid-cols-3 gap-6 animate-slide-up">
             <div className="bg-surface-bright p-6 border border-outline-variant/80 rounded-xl">
               <ShieldCheck className="h-8 w-8 text-accent-gold mb-3" strokeWidth={1.5} />
@@ -80,7 +79,6 @@ export default function DeliveryInfo() {
             </div>
           </div>
 
-          {/* Delivery Zones Table */}
           <div className="bg-surface-bright border border-outline-variant/80 rounded-xl p-6 md:p-8 animate-fade-in">
             <h2
               className="text-2xl text-on-surface mb-6"
@@ -111,7 +109,6 @@ export default function DeliveryInfo() {
             </div>
           </div>
 
-          {/* Self Pickup Notice */}
           <div className="bg-primary text-on-primary p-8 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="space-y-2 text-center md:text-left">
               <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-accent-gold">
@@ -134,7 +131,6 @@ export default function DeliveryInfo() {
             </Link>
           </div>
 
-          {/* Important Care Instructions */}
           <div className="p-6 bg-surface-container border border-outline-variant/80 rounded-xl space-y-3">
             <div className="flex items-center gap-2 text-on-surface font-semibold text-base" style={{ fontFamily: 'var(--font-family-display)' }}>
               <AlertCircle className="h-5 w-5 text-accent-gold" />

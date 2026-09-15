@@ -17,7 +17,6 @@ export default function ProductDetail() {
   const [isAdding, setIsAdding] = useState(false);
   const { addToCart } = useCart();
 
-  // Fetch product
   useEffect(() => {
     async function fetchProduct() {
       if (!id) return;
@@ -33,7 +32,6 @@ export default function ProductDetail() {
         if (error) throw error;
         setProduct(data);
 
-        // Fetch related products (same category, exclude current, limit 4)
         if (data?.category) {
           const { data: related } = await supabase
             .from('products')
@@ -53,13 +51,11 @@ export default function ProductDetail() {
     fetchProduct();
   }, [id]);
 
-  // Quantity controls
   const incrementQty = () => {
     if (product && quantity < product.stock) setQuantity(q => q + 1);
   };
   const decrementQty = () => setQuantity(q => Math.max(1, q - 1));
 
-  // Add to cart
   const handleAddToCart = () => {
     if (!product || !product.is_available || product.stock === 0) return;
     setIsAdding(true);
@@ -76,7 +72,6 @@ export default function ProductDetail() {
     }
   };
 
-  // Stock status
   const getStockStatus = () => {
     if (!product) return null;
     if (!product.is_available || product.stock === 0) return { text: 'Out of Stock' };
@@ -86,7 +81,6 @@ export default function ProductDetail() {
 
   const stockStatus = getStockStatus();
 
-  // Placeholder image
   const getImageUrl = (p: Product) => p.image_url || `https://picsum.photos/seed/${p.id}/600/600.jpg`;
 
   if (loading) {
@@ -141,7 +135,7 @@ export default function ProductDetail() {
     <div className="min-h-screen bg-surface" style={{ fontFamily: 'var(--font-family-body)' }}>
       <section className="py-10 md:py-16 px-4 md:px-6">
         <div className="mx-auto max-w-6xl">
-          {/* Breadcrumb */}
+          
           <nav className="mb-8 flex items-center gap-2 text-xs uppercase tracking-wider text-on-surface-variant/70" aria-label="Breadcrumb">
             <Link to="/" className="hover:text-primary transition-colors focus-ring">Home</Link>
             <ChevronRight className="h-3.5 w-3.5" />
@@ -151,7 +145,7 @@ export default function ProductDetail() {
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-start animate-slide-up">
-            {/* LEFT: Product Image */}
+            
             <div className="relative">
               <div className="aspect-[4/5] overflow-hidden bg-surface-container border border-outline-variant/60" style={{ borderRadius: 'var(--radius-2xl)' }}>
                 <img
@@ -169,21 +163,18 @@ export default function ProductDetail() {
               </div>
             </div>
 
-            {/* RIGHT: Product Info */}
             <div className="lg:pt-2">
-              {/* Category Badge */}
+              
               <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.14em] text-secondary mb-3">
                 {product.category}
               </span>
 
-              {/* Product Name */}
               <h1 className="mb-4 text-3xl md:text-4xl leading-tight text-on-surface"
                 style={{ fontFamily: 'var(--font-family-display)', fontWeight: 600 }}
               >
                 {product.name}
               </h1>
 
-              {/* Price & Stock */}
               <div className="flex items-center gap-4 mb-6 pb-6 border-b border-outline-variant/60">
                 <span className="text-2xl md:text-3xl font-semibold text-on-surface">
                   ₱{product.price.toLocaleString('en-PH', { minimumFractionDigits: 2 })}
@@ -198,14 +189,12 @@ export default function ProductDetail() {
                 )}
               </div>
 
-              {/* Description */}
               {product.description && (
                 <p className="mb-8 text-on-surface-variant text-[15px] leading-relaxed">
                   {product.description}
                 </p>
               )}
 
-              {/* Quantity Selector + Add to Cart */}
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8 p-5 bg-surface-bright border border-outline-variant/80"
                 style={{ borderRadius: 'var(--radius-xl)' }}
               >
@@ -256,7 +245,6 @@ export default function ProductDetail() {
                 </button>
               </div>
 
-              {/* Trust Badges */}
               <div className="grid grid-cols-2 gap-4 text-xs text-on-surface-variant border-t border-outline-variant/60 pt-6">
                 <div className="flex items-center gap-2.5">
                   <ShieldCheck className="h-4 w-4 text-accent-gold" strokeWidth={1.75} />
@@ -278,7 +266,6 @@ export default function ProductDetail() {
             </div>
           </div>
 
-          {/* Related Products Section */}
           {relatedProducts.length > 0 && (
             <section className="mt-20 border-t border-outline-variant/60 pt-16 animate-slide-up" aria-labelledby="related-heading">
               <div className="flex items-end justify-between mb-10">

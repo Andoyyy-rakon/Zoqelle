@@ -23,7 +23,7 @@ export default function Contact() {
 
     setSubmitting(true);
     try {
-      // Attempt to save inquiry to Supabase database
+      
       const { error } = await supabase.from('contact_inquiries').insert([
         {
           name: formData.name,
@@ -56,7 +56,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-surface" style={{ fontFamily: 'var(--font-family-body)' }}>
-      {/* Header Banner */}
+      
       <section className="relative overflow-hidden bg-primary text-on-primary py-16 md:py-20 px-4 md:px-6">
         <div className="mx-auto max-w-4xl text-center animate-fade-in">
           <span className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent-gold">
@@ -75,11 +75,10 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Main Contact Grid */}
       <section className="py-16 md:py-24 px-4 md:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-12 lg:grid-cols-12">
-            {/* Contact Details Column */}
+            
             <div className="lg:col-span-5 space-y-8 animate-slide-up">
               <div>
                 <span className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary block mb-2">
@@ -147,7 +146,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Contact Form Column */}
             <div className="lg:col-span-7 animate-fade-in">
               <div
                 className="bg-surface-bright p-6 md:p-10 border border-outline-variant/80 shadow-sm"

@@ -46,7 +46,6 @@ export default function Dashboard() {
         supabase.from('orders').select('status'),
       ]);
 
-      // Fetch recent orders with fallback
       let recentOrderData: any[] = [];
       const { data: ordersWithJoin, error: joinError } = await supabase
         .from('orders')
@@ -147,12 +146,12 @@ export default function Dashboard() {
   };
 
   const STATS_CHART_COLORS = [
-    '#d97706', // amber - pending
-    '#2563eb', // blue - confirmed
-    '#ea580c', // orange - preparing
-    '#059669', // emerald - ready
-    '#7c5a28', // secondary gold - delivered
-    '#dc2626', // red - cancelled
+    '#d97706', 
+    '#2563eb', 
+    '#ea580c', 
+    '#059669', 
+    '#7c5a28', 
+    '#dc2626', 
   ];
 
   if (loading) {
@@ -165,7 +164,7 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-8 animate-fade-in" style={{ fontFamily: 'var(--font-family-body)' }}>
-      {/* Stats Cards */}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
           title="Total Orders"
@@ -197,7 +196,6 @@ export default function Dashboard() {
         />
       </div>
 
-      {/* Order Status Distribution Chart */}
       <div className="bg-surface-bright rounded-2xl border border-outline-variant/80 p-6 md:p-8" style={{ boxShadow: 'var(--shadow-card)' }}>
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
@@ -277,9 +275,8 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Low Stock Alert + Recent Orders */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Low Stock Alert */}
+        
         <div className="lg:col-span-1 bg-surface-bright rounded-2xl border border-outline-variant/80 p-6" style={{ boxShadow: 'var(--shadow-card)' }}>
           <div className="flex items-center gap-2.5 mb-5 border-b border-outline-variant/60 pb-4">
             <AlertTriangle className="h-5 w-5 text-amber-700" />
@@ -317,7 +314,6 @@ export default function Dashboard() {
           )}
         </div>
 
-        {/* Recent Orders */}
         <div className="lg:col-span-2 bg-surface-bright rounded-2xl border border-outline-variant/80 p-6" style={{ boxShadow: 'var(--shadow-card)' }}>
           <div className="flex items-center justify-between mb-5 border-b border-outline-variant/60 pb-4">
             <h3 className="text-lg font-semibold text-on-surface" style={{ fontFamily: 'var(--font-family-display)' }}>

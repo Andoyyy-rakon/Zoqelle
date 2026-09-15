@@ -101,7 +101,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsAdmin(false);
   };
 
-  // Check admin status after auth state settles
   useEffect(() => {
     if (!loading && user && !isAdmin) {
       const checkAdmin = async () => {

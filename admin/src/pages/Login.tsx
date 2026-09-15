@@ -64,7 +64,7 @@ export default function Login() {
     <div className="min-h-screen bg-surface flex items-center justify-center p-4 sm:p-6" style={{ fontFamily: 'var(--font-family-body)' }}>
       <div className="w-full max-w-md animate-fade-in">
         <div className="bg-surface-bright rounded-3xl border border-outline-variant/80 p-8 sm:p-10" style={{ boxShadow: 'var(--shadow-card)' }}>
-          {/* Logo / Header */}
+          
           <div className="text-center mb-8">
             <Link to="/" className="inline-block group">
               <span className="text-3xl font-bold tracking-tight text-on-surface block" style={{ fontFamily: 'var(--font-family-display)' }}>
@@ -79,7 +79,6 @@ export default function Login() {
             </p>
           </div>
 
-          {/* Email/Password Form */}
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label htmlFor="email" className="block mb-2 text-xs font-semibold uppercase tracking-wider text-secondary">
@@ -144,7 +143,6 @@ export default function Login() {
             </button>
           </form>
 
-          {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-outline-variant/60" />
@@ -156,7 +154,6 @@ export default function Login() {
             </div>
           </div>
 
-          {/* Google Button */}
           <button
             onClick={handleGoogleSignIn}
             disabled={loading || googleLoading}

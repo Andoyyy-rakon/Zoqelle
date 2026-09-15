@@ -67,7 +67,7 @@ export default function Faqs() {
 
   return (
     <div className="min-h-screen bg-surface" style={{ fontFamily: 'var(--font-family-body)' }}>
-      {/* Header */}
+      
       <section className="relative bg-primary text-on-primary py-16 md:py-20 px-4 md:px-6 text-center">
         <div className="mx-auto max-w-3xl animate-fade-in">
           <span className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent-gold">
@@ -86,10 +86,9 @@ export default function Faqs() {
         </div>
       </section>
 
-      {/* Main FAQ Content */}
       <section className="py-14 md:py-20 px-4 md:px-6">
         <div className="mx-auto max-w-4xl">
-          {/* Category Tabs */}
+          
           <div className="flex flex-wrap justify-center gap-2 mb-10">
             {categories.map((cat) => (
               <button
@@ -110,7 +109,6 @@ export default function Faqs() {
             ))}
           </div>
 
-          {/* Accordion List */}
           <div className="space-y-4 animate-slide-up">
             {filteredFaqs.map((faq, idx) => {
               const isOpen = openIndex === idx;
@@ -146,7 +144,6 @@ export default function Faqs() {
             })}
           </div>
 
-          {/* Still Have Questions Box */}
           <div
             className="mt-14 p-8 bg-surface-container border border-outline-variant/80 text-center rounded-xl"
             style={{ borderRadius: 'var(--radius-xl)' }}

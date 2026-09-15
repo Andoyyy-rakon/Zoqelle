@@ -237,7 +237,7 @@ export default function Products() {
 
   return (
     <div className="space-y-6 animate-fade-in" style={{ fontFamily: 'var(--font-family-body)' }}>
-      {/* Header */}
+      
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-outline-variant/60 pb-4">
         <div>
           <h1 className="text-2xl font-bold text-on-surface" style={{ fontFamily: 'var(--font-family-display)' }}>
@@ -257,7 +257,6 @@ export default function Products() {
         </button>
       </div>
 
-      {/* Search & Filters */}
       <div className="bg-surface-bright rounded-2xl border border-outline-variant/80 p-4">
         <div className="relative flex-1">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-on-surface-variant" />
@@ -271,7 +270,6 @@ export default function Products() {
         </div>
       </div>
 
-      {/* Products List */}
       <div className="bg-surface-bright rounded-2xl border border-outline-variant/80 overflow-hidden" style={{ boxShadow: 'var(--shadow-card)' }}>
         {filteredProducts.length === 0 ? (
           <div className="text-center py-16">
@@ -295,7 +293,7 @@ export default function Products() {
           </div>
         ) : (
           <>
-            {/* Mobile Card View */}
+            
             <div className="lg:hidden divide-y divide-outline-variant/60 p-4 space-y-4">
               {filteredProducts.map((product) => (
                 <ProductCard
@@ -308,7 +306,6 @@ export default function Products() {
               ))}
             </div>
 
-            {/* Desktop Table View */}
             <div className="hidden lg:block overflow-x-auto">
               <table className="w-full text-left" role="table">
                 <thead className="bg-surface-container/40 border-b border-outline-variant/60">
@@ -338,7 +335,6 @@ export default function Products() {
         )}
       </div>
 
-      {/* Add Product Modal */}
       {showAddForm && (
         <ProductForm
           product={null}
@@ -347,7 +343,6 @@ export default function Products() {
         />
       )}
 
-      {/* Edit Product Modal */}
       {editingProduct && (
         <ProductForm
           product={editingProduct}

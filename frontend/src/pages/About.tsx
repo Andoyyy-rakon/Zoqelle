@@ -36,7 +36,7 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-surface" style={{ fontFamily: 'var(--font-family-body)' }}>
-      {/* Header Banner */}
+      
       <section className="relative overflow-hidden bg-primary text-on-primary py-16 md:py-24 px-4 md:px-6">
         <div className="mx-auto max-w-4xl text-center animate-fade-in">
           <span className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent-gold">
@@ -55,7 +55,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Narrative Section */}
       <section className="py-16 md:py-24 px-4 md:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
@@ -105,7 +104,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Stats Counter */}
       <section className="bg-surface-bright py-14 border-y border-outline-variant/60">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -126,7 +124,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Core Values */}
       <section className="py-16 md:py-24 px-4 md:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
@@ -164,7 +161,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA Footer Section */}
       <section className="bg-primary text-on-primary py-16 px-4 md:px-6 text-center">
         <div className="mx-auto max-w-2xl">
           <h2
