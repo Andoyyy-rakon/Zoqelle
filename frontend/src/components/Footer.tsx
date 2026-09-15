@@ -142,7 +142,7 @@ export default function Footer() {
               </div>
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-primary transition-all hover:brightness-110 active:scale-[0.99] focus-ring"
+                className="w-full cursor-pointer flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-primary transition-all hover:brightness-110 active:scale-[0.99] focus-ring"
                 style={{ backgroundColor: 'var(--color-accent-gold)', borderRadius: 'var(--radius-md)' }}
               >
                 <span>Subscribe</span>
