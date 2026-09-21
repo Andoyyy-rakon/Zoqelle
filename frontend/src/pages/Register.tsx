@@ -2,8 +2,9 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { CakeSlice, Loader2, Lock, Mail, User, Eye, EyeOff } from 'lucide-react';
+import { Loader2, Lock, Mail, User, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
+import ZoqelleLogo from '../assets/ZoqelleLogo.png';
 
 export default function Register() {
   const { user, loading, signUp, signInWithGoogle } = useAuth();
@@ -66,9 +67,7 @@ export default function Register() {
     <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-surface" style={{ fontFamily: 'var(--font-family-body)' }}>
       <div className="w-full max-w-md bg-surface-bright rounded-2xl border border-outline-variant/80 p-8 md:p-10 animate-slide-up shadow-sm">
         <div className="flex flex-col items-center mb-8 text-center">
-          <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4 bg-primary text-on-primary">
-            <CakeSlice className="w-7 h-7 text-accent-gold" strokeWidth={1.5} />
-          </div>
+          <img src={ZoqelleLogo} alt="Zoqelle Logo" className="h-12 w-auto object-contain mb-4" />
           <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-secondary mb-1">
             Join Our Bakery
           </span>
